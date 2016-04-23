@@ -13,28 +13,38 @@ accidentes a través de un sistema de mapeo y analisis de inputs meteorologicos 
 <head>
 	<!-- Config Base -->
 	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	<title>Save my Drone {{version}}</title>
 
 	<!-- Diseño: CSS + Jquery -->
-	<link href="../diseño/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="diseño/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="diseño/css/estilo.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="../diseño/css/animate.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 	<!-- UX: Jquery -->
 	<script class="jsbin" src="../comportamiento/js/jquery-1.11.3.min.js"></script>
-	<script src="../comportamiento/js/jquery-ui.js"></script>
-	<script src="../comportamiento/js/comportamiento.js"></script>
-	<script src="../comportamiento/js/bootstrap.min.js"></script>
-	<script src="../comportamiento/js/bootstrap-notify.min.js"></script>
+	<script src="comportamiento/js/jquery-ui.js"></script>
+	<script src="comportamiento/js/comportamiento.js"></script>
+	<script src="comportamiento/js/bootstrap.min.js"></script>
+	<script src="comportamiento/js/bootstrap-notify.min.js"></script>
 
 	<!-- Controlador: AngularJS -->
-	<script src="../comportamiento/js/angular.min.js"></script>
+	<script src="comportamiento/js/angular.min.js"></script>
 
 </head>
 
+<!-- Inicialización de Variables Claves -->
+<body   ng-init="geolocalizacion=''"
+		ng-init="temp=''"
+		ng-init="humedad=''"
+		ng-init="viento=''"
+		ng-init="probLluvia=''">
 
-<body>
-
+<!-- Interfaz Base -->
+<h1> Save my Drone {{version}} </h1>
+<h2> Drone ID = {{ID}} </h2>
+<label> Localización = </label> <input></input>
 </body>
 
 </html>
