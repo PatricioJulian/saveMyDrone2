@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html ng-app 	ng-init="version='Beta 0.1'"
-				ng-init="equipo= 'saveMyDrone'"
-				ng-init="miembtos= ''">
+<html ng-app			
+						ng-init="version='Beta 0.3'"
+						ng-init="nombreApp='JAMPS'"
+						ng-init="equipo= 'saveMyDrone'"
+						ng-init="miembros= ''">
 
 <!-- Ultima Actualización: 23/04/2016 -->
 <!-- Aplicación Web para presentar en Hackaton de la NASA, la cual tiene como fin ayudar a usuarios de Drones a evitar
@@ -13,8 +15,9 @@ accidentes a través de un sistema de mapeo y analisis de inputs meteorologicos 
 <head>
 	<!-- Config Base -->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">s
-	<title>Save my Drone {{version}}</title>
+    <meta charset="utf-8">
+	<title> JAMPS {{version}}</title>
+	<link rel="icon" href="contenido/img/dron.ico" type="image/x-icon"/>
 
 	<!-- Diseño: CSS + Jquery -->
 	<link href="diseño/css/bootstrap.min.css" rel="stylesheet"/>
@@ -25,14 +28,36 @@ accidentes a través de un sistema de mapeo y analisis de inputs meteorologicos 
 	<!-- UX: Jquery -->
 	<script class="jsbin" src="comportamiento/js/jquery-1.11.3.min.js"></script>
 	<script src="comportamiento/js/jquery-ui.js"></script>
+	<script src="comportamiento/js/jquery.playSound.js"></script>
 	<script src="comportamiento/js/comportamiento.js"></script>
 	<script src="comportamiento/js/bootstrap.min.js"></script>
 	<script src="comportamiento/js/bootstrap-notify.min.js"></script>
 
 	<script src="comportamiento/js/mapa.js"></script>
+	<script src="comportamiento/js/mapa-condicionales.js"></script>
+
 
 	<!-- Controlador: AngularJS -->
 	<script src="comportamiento/js/angular.min.js"></script>
+
+
+
+
+	<!-- Codigo para Trackeo de Posicion de Mouse -->
+	<script type="text/javascript">
+window.onload = init;
+function init() {
+	if (window.Event) {
+	document.captureEvents(Event.MOUSEMOVE);
+	}
+	document.onmousemove = getCursorXY;
+}
+
+function getCursorXY(e) {
+	document.getElementById('cursorX').value = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+	document.getElementById('cursorY').value = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+}
+</script>
 
 </head>
 
@@ -41,15 +66,81 @@ accidentes a través de un sistema de mapeo y analisis de inputs meteorologicos 
 		ng-init="temp=''"
 		ng-init="humedad=''"
 		ng-init="viento=''"
-		ng-init="probLluvia=''">
+		ng-init="probLluvia=''"
+
+		>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <i id="loading" class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i>
+        <h4 class="modal-title">¡Welcome!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Using this Application you will be able to use your drone quadcopter safely.</p>
+        <p>Please enter an ID for yor Drone.</p>
+      </div>
+      <div class="modal-footer">
+      	<label>ID:</label><input type="text" ng-model="ID"></input>
+        <div class="btn btn-default" ID="aceptarModal">Accept</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- Interfaz Base -->
-	<h1> Save my Drone {{version}} </h1>
-	<h2> Drone ID = {{ID}} </h2>
-	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+
+
+	<!-- Barra de Navegacion -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img alt="Brand" id="logo" class="img-responsive" src="contenido/img/map-.png">
+    </div>
+    <ul class="nav navbar-nav">
+	<li><a> JAMPS {{version}} </a></li>
+	<li><a> Drone ID = {{ID}} </a></li>
+	<li><a> <input type="text" id="cursorX" ng-model="cursorX" size="3"> X-Posición del Dron </a></li>
+	<li><a> <input type="text" id="cursorY" size="3"> Y-Posición del Dron </a></li>
+	<li><a> Temperature = 75º F </a></li>
+	<li><a> Wind = West 10 mpeh </a></li>
+	<li><a><small> Rain Probability = 10% </a></small></li>
+	<li><a id="time">  <script>
+document.getElementById("time").innerHTML = Date();
+</script></a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+	
+
+	<!-- Zona de Trabajo / MAPA -->
+	<div class="container" id="zonaDeTrabajo"> 
+		<div class="row">
+  			<div class="col-md-12"> <h1 ID="bateria-counter" class="bottomleft"> <i class="fa fa-battery-full" aria-hidden="true"></i> Battery: <p id="timer_div" class="enlinea"></p>% </h1></div> 
+		</div>
+	</div>
+
+	<!-- Google Maps API 
+	<input id="pac-input" ng-model="ubicacion" class="controls" type="text" placeholder="Search Box">
 	<div id="map"></div>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnPxujUlyjsoS3fYrF0N69cwM8V-mTOD0&libraries=places&callback=initAutocomplete"
-         async defer></script>
+         async defer></script> 
+
+    <img id="mapaFlorida" class="mapas" src="contenido/img/mapaflorida.png"><img> -->
+
+
 </body>
 
 </html>
