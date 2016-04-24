@@ -23,8 +23,8 @@ $("#zonaDeTrabajo").hide().fadeIn(2000);
 // Notificación de Bienvenida
 	$.notify({
   icon: 'contenido/img/dronb.png',
-	title: '<strong>¡Bienvenido!</strong>',
-	message: '<p>Con esta aplicación podras planear tu propio plan de vuelo por Miami, ¡Diviertete!.</p>'
+	title: '<strong>¡Welcome!</strong>',
+	message: '<p>Con esta aplicación podras planear tu propio plan de vuelo por Miami, ¡Enjoy it!.</p>'
 },{
     offset: {
     x: 10,
