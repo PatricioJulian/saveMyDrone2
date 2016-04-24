@@ -24,7 +24,7 @@ $("#zonaDeTrabajo").hide().fadeIn(2000);
 	$.notify({
   icon: 'contenido/img/dronb.png',
 	title: '<strong>¡Welcome!</strong>',
-	message: '<p>Con esta aplicación podras planear tu propio plan de vuelo por Miami, ¡Enjoy it!.</p>'
+	message: '<p>Now you can simulate your flight plan, it is time to save your drone, ¡Enjoy it!.</p>'
 },{
     offset: {
     x: 10,
