@@ -3,6 +3,8 @@ $(document).ready(function(){
 
 $('#myModal').modal('show');
 $("#loading").hide();
+$("#youLose").hide();
+
 
 
 $('.modal-dialog').draggable();
@@ -12,6 +14,8 @@ $( "#aceptarModal" ).click(function() {
   $("body").css("cursor", "wait")
   $("#loading").show();
 });
+
+var drone = {health:99};
 
 
 setTimeout(function(){  
@@ -45,6 +49,9 @@ setInterval(function() {
   	$( "#zonaDeTrabajo" ).effect( "shake" );
   	$.playSound('comportamiento/sound/gdi_warning').delay(500)
   	$.playSound('comportamiento/sound/alarm')
+    drone.Destruyendose = function() {
+    this.health = this.health - 33;
+};
    	$.notify({
   icon: 'contenido/img/danger.png',
 	title: '<strong>¡DANGER!</strong>',
@@ -347,9 +354,21 @@ var interval = setInterval(function() {
     {
        document.getElementById('timer_div').innerHTML = "Your battery is over, get a new one";
        clearInterval(interval);
-       location.reload();
+       $("#zonaDeTrabajo").fadeOut(2000).delay(9000).location.reload();
+       $.playSound('comportamiento/sound/explosion')
+       $("#youLose").delay(2000).fadeIn(2000);
     }
 }, 9000);
+
+  setInterval (function() {
+    drone.Destruyendose = function() {
+    if (drone.health < 1) {
+              $("#zonaDeTrabajo").fadeOut(2000).delay(9000).location.reload();
+              $.playSound('comportamiento/sound/explosion')
+              $("#youLose").delay(2000).fadeIn(2000); 
+          }
+      };
+    }, 500);
 
 
 

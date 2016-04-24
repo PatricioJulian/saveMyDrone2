@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html ng-app			
-						ng-init="version='Beta 0.5'"
+						ng-init="version='Beta 0.6'"
 						ng-init="nombreApp='JAMPS'"
 						ng-init="equipo= 'saveMyDrone'"
 						ng-init="miembros= ''">
@@ -80,11 +80,11 @@ function getCursorXY(e) {
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <i id="loading" class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i>
-        <h4 class="modal-title">¡Welcome to JAMPS!</h4>
+        <h4 class="modal-title"><b>¡Welcome to JAMPS!</b></h4>
       </div>
       <div class="modal-body">
         <p>Using this open-source crowd-sourced Application you will be able to use your drone quadcopter safely. ¡SAVE YOUR DRONE!</p>
-        <p>This is a testing BETA Mock-Up prototype working only for Miami International Airport Area in a 5 miles radio.</p>
+        <p>NOTE: This is a testing BETA Mock-Up prototype working only for Miami International Airport Area in a 5 miles radio.</p>
         <p>Please enter an ID for yor Drone and start getting fun!.</p>
       </div>
       <div class="modal-footer">
@@ -147,7 +147,7 @@ document.getElementById("time").innerHTML = Date();
 
     <img id="mapaFlorida" class="mapas" src="contenido/img/mapaflorida.png"><img> -->
 
-
+<div ID="youLose"> <h1> YOUR DRONE IS COMPLETELY DESTROYED!!!! </h1> </div>
 
 
 
